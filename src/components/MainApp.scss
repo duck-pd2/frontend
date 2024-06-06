@@ -1,0 +1,23 @@
+#MainApp {
+    display: flex;
+    .buttonLogin {
+        height: 5vh;
+        line-height: 5vh;
+        font-size: 2vh;
+        text-align: right;
+        background-color: #d7dfef;
+        border: 0.1rem #3b4149 solid;
+        margin-left: auto;
+    }
+
+    .buttonLeft{
+        height: 5vh;
+        line-height: 5vh;
+        font-size: 2vh;
+        text-align: right;
+        background-color: #d7dfef;
+         border: 0.1rem #3b4149 solid;
+        // margin: auto;
+    }
+
+}
