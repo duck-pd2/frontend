@@ -9,9 +9,9 @@ function ButtonLogin(){
         </button>
     );
 }
-function ButtonLeft(){
+function ButtonMenu(){
     return(
-        <button className="buttonLeft">
+        <button className="buttonMenu">
             <span className="material-symbols-outlined">
 menu
 </span>
@@ -24,7 +24,7 @@ export default function MainApp(): ReactElement{
 
     return <div id="MainApp">
         {/* <h1>PD2 duck Calender</h1> */}
-        <ButtonLeft />
+        <ButtonMenu />
         <ButtonLogin />
 
     </div>;
