@@ -1,12 +1,36 @@
-.App {
+#app {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    isolation: isolate;
+  
     .banner {
-        height: 15vh;
-        line-height: 15vh;
-        font-size: 4vh;
-        text-align: center;
-        background-color: #a7c0ef;
+      position: sticky;
+      top: 0;
+      height: 12vh;
+      background-color: #333333;
+      z-index: 0;
+  
+      h1 {
+        position: absolute;
+        color: #FFF;
+        margin: 0;
+        left: 2rem;
+        bottom: 2vh;
+        font-size: 2.5rem;
+        font-weight: 200;
+      }
     }
-
-
-}
-
+  
+    #topBar {
+      z-index: 2;
+    }
+  
+    .content {
+      position: sticky;
+      z-index: 1;
+      min-height: calc(100vh - 3rem);
+      background-color: #FFF;
+    }
+  }

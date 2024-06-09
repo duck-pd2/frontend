@@ -1,0 +1,121 @@
+#sideBar {
+    position: relative;
+
+    label.button {
+        position: relative;
+        display: block;
+        height: var(--topbar-height, 2rem);
+        width: var(--topbar-height, 2rem);
+        cursor: pointer;
+        user-select: none;
+
+        input {
+            display: none;
+        }
+    }
+
+    label.button::before,
+    label.button::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-family: inherit;
+        font-size: 1.25rem;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        line-height: var(--topbar-height, 2rem);
+        color: #FFFFFF;
+        transition: transform 0.3s, opacity 0.3s;
+    }
+
+    label.button::before {
+        content: "menu";
+        opacity: 100%;
+        transform: rotate(0deg);
+    }
+
+    label.button::after {
+        content: "menu_open";
+        opacity: 0%;
+        transform: rotate(-90deg);
+    }
+
+    label.button:has(input:checked)::before {
+        opacity: 0%;
+        transform: rotate(90deg);
+    }
+
+    label.button:has(input:checked)::after {
+        opacity: 100%;
+        transform: rotate(0deg);
+    }
+
+    .windowMask {
+        position: absolute;
+        left: calc(-1 * var(--topbar-padding-y, 0.5rem));
+        top: calc(100% + var(--topbar-padding-y, 0.5rem));
+        pointer-events: none;
+        height: calc(100vh - 2 * var(--topbar-padding-y, 0.5rem) - var(--topbar-height, 2rem));
+        width: 100vw;
+        overflow: hidden;
+
+
+        .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-bottom-right-radius: 100%;
+            overflow: hidden;
+            width: 0px;
+            height: 0px;
+            background-color: #0000;
+            transition: width 0.5s, height 0.5s, background-color 0.5s;
+
+            .menuList {
+                position: absolute;
+                background-color: #3A3A3A;
+                box-shadow: 0 0 0.25rem 0 #000000;
+                padding-bottom: 2.5rem;
+                width: 12rem;
+                height: calc(100vh - var(--topbar-height) - 2 * var(--topbar-padding-y) - 2.5rem);
+                overflow-x: hidden;
+                pointer-events: initial;
+
+                .menu {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    height: 3rem;
+                    padding: 0.5rem 1rem;
+                    color: #AAA;
+                    font-size: 1rem;   //字大小
+                    white-space: nowrap;
+                    font-weight: 200;
+                    user-select: none;
+                    border-left: 0 solid #E80;
+                    border-bottom: 0.05rem solid #888;
+                    transition: color 0.3s, border-width 0.2s;
+
+                    >* {
+                        cursor: pointer;
+                    }
+                }
+
+                .menu:hover {
+                    color: #FFF;
+                    border-left-width: 0.2rem;
+                }
+            }
+        }
+    }
+
+}
+
+#sideBar:has(input:checked) {
+    .mask {
+        background-color: #0006;
+        height: 142vmax;
+        width: 142vmax;
+    }
+}

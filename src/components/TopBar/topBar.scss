@@ -1,0 +1,52 @@
+#topBar {
+    position: sticky;
+    top: 0;
+    height: var(--topbar-height, 2rem);
+    width: calc(100% - 2 * var(--topbar-padding-x, 0.5rem));
+    padding:
+        var(--topbar-padding-y, 0.5rem) var(--topbar-padding-x, 0.5rem);
+    background-color: #222222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0.2rem 0.4rem -0.2rem #000000;
+
+    --topbar-height: 2rem;
+    --topbar-padding-x: 0.5rem;
+    --topbar-padding-y: 0.5rem;
+
+    .userArea {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        img {
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            height: 95%;
+            outline: none;
+            user-select: none;
+            color: #AAA;
+            padding: 0 0.75rem;
+            background-color: #FFF0;
+            border: 0.05rem solid #AAA;
+            border-radius: 0.35rem;
+            cursor: pointer;
+            transition: border-color 0.3s, color 0.3s, background-color 0.3s;
+        }
+
+        button:hover {
+            color: #000;
+            background-color: #FFF;
+            border-color: #FFF;
+        }
+    }
+}

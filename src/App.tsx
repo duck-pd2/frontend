@@ -1,21 +1,25 @@
-import {Calendar} from "./components/Calendar";
-import MainApp from "./components/MainApp";
-
+import {Calendar, } from "./components/Calendar";
+import { ReactElement } from "react";
 import "./App.scss";
+import { Navigate, Route, Routes } from "react-router-dom";
+import TopBar from "./components/TopBar/topBar";
+import Home from "./components/Home/home";
+import Moodle from "./components/Moodle/moodle";
 
-function App() {
-   
-    return (
-        <div className="App">
-            <div className="banner">
-                <h1>PD2 duck Calender</h1>
-            </div>
-            <MainApp />
-            <Calendar />
+export default function App(): ReactElement {
+
+    return <div id="app">
+        <div className="banner">
+            <h1>PD2 Duck Calender</h1>
         </div>
-    );
-
-}
-
-
-export default App;
+        <TopBar />
+        <div className="content">
+            <Routes>
+                <Route path="home" element={<Home/>} />
+                <Route path="moodle" element={<Moodle/>} />
+                <Route path="calender" element={<Calendar/>} />
+                <Route path="*" element={<Navigate to="home" />} />
+            </Routes>
+        </div>
+    </div>;
+};
