@@ -11,7 +11,7 @@ export default function TopBar(): ReactElement {
         {login ? 
         <div className = "userArea">
             <img alt="avatar" src="" />     
-            {/* 傳入照片 */}
+            {/* " "傳入照片 */}
             <button>
             <span className="material-symbols-outlined">
 logout
@@ -25,6 +25,7 @@ logout
             <span className="material-symbols-outlined">
 login
 </span>
+{/* login圖案 */}
             <span className="text">Login</span>
             </button>
             </div>}

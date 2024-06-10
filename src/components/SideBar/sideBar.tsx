@@ -33,17 +33,26 @@ export default function SideBar(): ReactElement{
         <div className="windowMask">
             <div className="mask">
                 <div className="menuList">
-                    <div className="menu" onClick={() => setNavigate("moodle")}>
+                    <div className="menu" onClick={() => {
+                        setNavigate("moodle");
+                        setChecked(false);
+                    }}>
                         <div>
                             將 moodle 行事曆匯入
                         </div>
                     </div>
-                    <div className="menu" onClick={() => setNavigate("calender")}>
+                    <div className="menu" onClick={() => {
+                        setNavigate("calender");
+                        setChecked(false);
+                    }}>
                         <div>
                             查看行事曆
                         </div>
                     </div>
-                    <div className="menu" onClick={() => setNavigate("home")}>
+                    <div className="menu" onClick={() => {
+                        setNavigate("home");
+                        setChecked(false);
+                    }}>
                         <div>
                             回首頁
                         </div>
