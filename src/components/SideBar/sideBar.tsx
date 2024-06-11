@@ -1,6 +1,6 @@
-import { 
-    ReactElement, 
-    useEffect, 
+import {
+    ReactElement,
+    useEffect,
     useRef,
     useState,
     ChangeEvent
@@ -9,23 +9,30 @@ import {
 import "./sideBar.scss";
 import { useNavigate } from "react-router-dom";
 
-export default function SideBar(): ReactElement{
+export default function SideBar(props: Readonly<{
+    login: boolean
+}>): ReactElement {
+    const {
+        login
+    } = props;
+    // 引用別的變數
     const topBarRef = useRef<HTMLDivElement>(null);
     const [checked, setChecked] = useState<boolean>(false);
     const setNavigate = useNavigate();
-    useEffect(() =>{
-        if(topBarRef.current === null)
+
+    useEffect(() => {
+        if (topBarRef.current === null)
             return;
         document.addEventListener("click", (event: MouseEvent) => {
             const target = event.target as HTMLElement;
             if (target === null || topBarRef.current?.contains(target))
                 return;
             setChecked(false);
-    });
+        });
     }, [topBarRef]);
 
-    return <div ref={topBarRef} id ="sideBar">
-          <label className="material-symbols-outlined button">
+    return <div ref={topBarRef} id="sideBar">
+        <label className="material-symbols-outlined button">
             <input checked={checked} type="checkbox" onChange={(event: ChangeEvent<HTMLInputElement>) => {
                 setChecked(event.target.checked);
             }} />
@@ -34,6 +41,12 @@ export default function SideBar(): ReactElement{
             <div className="mask">
                 <div className="menuList">
                     <div className="menu" onClick={() => {
+                        if (!login) {
+                            setNavigate("notice");
+                            setChecked(false);
+                            return;
+                        }
+
                         setNavigate("moodle");
                         setChecked(false);
                     }}>
@@ -42,6 +55,11 @@ export default function SideBar(): ReactElement{
                         </div>
                     </div>
                     <div className="menu" onClick={() => {
+                        if (!login) {
+                            setNavigate("notice");
+                            setChecked(false);
+                            return;
+                        }
                         setNavigate("calender");
                         setChecked(false);
                     }}>
@@ -50,6 +68,11 @@ export default function SideBar(): ReactElement{
                         </div>
                     </div>
                     <div className="menu" onClick={() => {
+                        // if (!login) {
+                        //     setNavigate("notice");
+                        //     setChecked(false);
+                        //     return;
+                        // }
                         setNavigate("home");
                         setChecked(false);
                     }}>
