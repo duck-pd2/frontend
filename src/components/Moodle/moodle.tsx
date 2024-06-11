@@ -5,7 +5,7 @@ import exampleImage from './picture.png';
 
 export default function Moodle(): ReactElement {
     const [selectedFile, setSelectedFile] = useState<File>();
-    //const login = true;
+    
     return <div id="moodle">
         <div className="import">
             <h2> 

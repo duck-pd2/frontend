@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import TopBar from "./components/TopBar/topBar";
 import Home from "./components/Home/home";
 import Moodle from "./components/Moodle/moodle";
+import Notice from "./components/Notice/notice";
 
 export default function App(): ReactElement {
 
@@ -18,6 +19,7 @@ export default function App(): ReactElement {
                 <Route path="home" element={<Home/>} />
                 <Route path="moodle" element={<Moodle/>} />
                 <Route path="calender" element={<Calendar/>} />
+                <Route path="notice" element={<Notice/>} />
                 <Route path="*" element={<Navigate to="home" />} />
             </Routes>
         </div>
