@@ -23,3 +23,33 @@ body {
     display: none;
   } */
 }
+
+.ms {
+  font-family: "Material Symbols Outlined";
+  user-select: none;
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+
+::-webkit-scrollbar {
+  width: 0.3rem;
+  height: 0.3rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #8888;
+  transition: background-color 0.5s;
+  border-radius: 0.175rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}

@@ -5,23 +5,13 @@ import exampleImage from './picture.png';
 
 export default function Moodle(): ReactElement {
     const [selectedFile, setSelectedFile] = useState<File>();
-    
+
     return <div id="moodle">
         <div className="import">
             <h2> 
-                上傳行事曆 ICS檔
+                上傳行事曆網址
                 </h2>
-            <label className="selectFile">
-                <span>
-                    Select File
-                    </span>  
-                <input type="file" onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                    const file = event.target.files?.[0];
-                    if (file === undefined)
-                        return;
-                    setSelectedFile(file);
-                }} />
-            </label>
+            <input></input>
             <button className=" buttonUpload">
                 Upload
             </button>

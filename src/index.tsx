@@ -4,6 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import axios from 'axios';
+
+axios.interceptors.request.use(async (config) => {
+  config.baseURL = process.env.REACT_APP_API_END_POINT;
+  
+  return config;
+})
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
