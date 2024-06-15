@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -11,34 +11,7 @@ Modal.setAppElement('#root');
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [noteModalIsOpen, setNoteModalIsOpen] = useState(false);
-  const [events, setEvents] = useState([
-    {
-      id: '1',
-      title: 'Meeting',
-      start: '2024-06-10T10:30:00',
-      end: '2024-06-10T12:30:00',
-      backgroundColor: '#3788d8',
-      tag: 'Tasks',
-      note: 'Discuss project status'
-    },
-    {
-      id: '2',
-      title: 'Lunch',
-      start: '2024-06-11T12:00:00',
-      backgroundColor: '#3788d8',
-      tag: 'Tasks',
-      note: 'Lunch with team'
-    },
-    {
-      id: '3',
-      title: 'Conference',
-      start: '2024-06-13',
-      end: '2024-06-15',
-      backgroundColor: '#3788d8',
-      tag: 'work',
-      note: 'Attend annual conference'
-    }
-  ]);
+  const [events, setEvents] = useState([]);
   const [currentNote, setCurrentNote] = useState('');
 
   const [newEvent, setNewEvent] = useState({
@@ -51,10 +24,7 @@ function App() {
     note: ''
   });
 
-  const [filterTags, setFilterTags] = useState({
-    Tasks: true,
-    work: true
-  });
+  const [filterTags, setFilterTags] = useState({});
 
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => {
@@ -80,6 +50,36 @@ function App() {
 
   const [filterVisible, setFilterVisible] = useState(true);
   
+  useEffect(() => {
+    fetch('http://localhost:8080/api/v0')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const fetchedEvents = data.map(event => ({
+          id: event.id,
+          title: event.title,
+          start: event.start,
+          end: event.end,
+          backgroundColor: '#3788d8',
+          tag: event.id,
+          note: event.description
+        }));
+        setEvents(fetchedEvents);
+        const tags = fetchedEvents.reduce((acc, event) => {
+          if (!acc[event.tag]) {
+            acc[event.tag] = true;
+          }
+          return acc;
+        }, {});
+        setFilterTags(tags);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
+  
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (newEvent.title && newEvent.start) {
@@ -254,6 +254,16 @@ function App() {
       >
         <h2>Event Note</h2>
         <p>{currentNote}</p>
+        <br />
+        <label style={{ fontFamily: "'Times New Roman', Times, serif",fontSize: "16px" , marginBottom :"10px"}}>    
+          backgroundColor:
+            <input
+              type="color"
+              name="backgroundColor"
+              value={newEvent.backgroundColor}
+              onChange={handleInputChange}
+            />
+          </label>
         <button onClick={closeNoteModal} style={{ fontFamily: "'Times New Roman', Times, serif" }}>Close</button>
       </Modal>
         
