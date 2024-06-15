@@ -31,6 +31,7 @@ export default function TopBar(): ReactElement {
             <div className="userArea">
                 <img alt="avatar" src="" />
                 {/* " "傳入照片 */}
+                
                 <button onClick={() => {
                     localStorage.removeItem("token");
                     setNavigate("/");

@@ -13,14 +13,14 @@ export default function ToLogin(): ReactElement {
     return <div id="toLogin">
         <div className="toLogin">
             <input className="account" value={username} onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                console.log(event.target.value)
                 setUsername(event.target.value);
             }}></input>
             <input className="password" type="password" value={pwd} onChange={(event: ChangeEvent<HTMLInputElement>)=>{
-                console.log(event.target.value)
                 setPwd(event.target.value);
             }}></input>
             <button onClick={() => {
+                console.log("username = " + username)
+                console.log("pwd = " + pwd)
                 register({username: username, pwd: pwd}).then(data => {
                     localStorage.setItem("token", data.token);
                 }).catch(() => {
@@ -30,6 +30,8 @@ export default function ToLogin(): ReactElement {
                 註冊
             </button>
             <button onClick={() => {
+                console.log("username = " + username)
+                console.log("pwd = " + pwd)
                 login({username: username, pwd: pwd}).then(data => {
                     localStorage.setItem("token", data.token);
                 }).catch(() => {
