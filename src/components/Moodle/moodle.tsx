@@ -15,18 +15,14 @@ export default function Moodle(): ReactElement {
                 setIcs_url(event.target.value);
             }}></input>
             <button onClick={() => {
+                console.log("ics_url = " + ics_url)
                 moodleUpload({ics_url: ics_url}).then(data => {
-                    console.log("ics_url = " + ics_url)
-                    localStorage.setItem("token", data.token);
+                    console.log("MoodleUpload success.")
                 }).catch(() => {
-                    console.log("Login failed.");
+                    console.log("MoodleUpload failed.");
                 });
             }}>
-                Upload1
-            </button>
-
-            <button className=" buttonUpload">
-                Upload2
+                Upload
             </button>
             <img src={exampleImage} alt ="Example" className= "Image" />
         </div>

@@ -22,9 +22,10 @@ export default function ToLogin(): ReactElement {
                 console.log("username = " + username)
                 console.log("pwd = " + pwd)
                 register({username: username, pwd: pwd}).then(data => {
+                    console.log("Register success.")
                     localStorage.setItem("token", data.token);
                 }).catch(() => {
-                    console.log("Login failed.");
+                    console.log("Register failed.");
                 });
             }}>
                 註冊
@@ -33,6 +34,7 @@ export default function ToLogin(): ReactElement {
                 console.log("username = " + username)
                 console.log("pwd = " + pwd)
                 login({username: username, pwd: pwd}).then(data => {
+                    console.log("Login success.")
                     localStorage.setItem("token", data.token);
                 }).catch(() => {
                     console.log("Login failed.");
