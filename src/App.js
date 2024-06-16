@@ -51,7 +51,7 @@ function App() {
   const [filterVisible, setFilterVisible] = useState(true);
   
   useEffect(() => {
-    fetch('http://localhost:8080/api/v0')
+    fetch('http://localhost:8080/api/v0/events')
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
