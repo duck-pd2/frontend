@@ -1,4 +1,4 @@
-import { Calendar, } from "./components/Calendar";
+// import { Calendar, } from "./components/Calendar";
 import { ReactElement, useMemo } from "react";
 import "./App.scss";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
@@ -10,6 +10,7 @@ import ToLogin from "./components/ToLogin/toLogin";
 import userContext from "./context/user";
 import { jwtDecode } from "jwt-decode";
 import User from "./schemas/user";
+import Calendar from "./components/Calendar";
 
 export default function App(): ReactElement {
     const location = useLocation();
