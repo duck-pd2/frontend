@@ -19,6 +19,13 @@
             align-items: center;
             justify-content: center;
         }
+        div{
+            color: red;
+        }
+        .button-container {
+            display: flex;
+            gap: 1rem; // 按钮之间的间距
+        }
         button{
             display: flex;
             align-items: center;

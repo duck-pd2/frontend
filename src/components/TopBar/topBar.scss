@@ -21,6 +21,11 @@
         align-items: center;
         gap: 0.5rem;
 
+        .username {
+            color: #ffffff; // 你想要的颜色
+            font-weight: bold; // 其他样式
+        }
+
         img {
             height: 100%;
             object-fit: contain;

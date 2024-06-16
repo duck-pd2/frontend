@@ -29,11 +29,15 @@ export default function TopBar(): ReactElement {
         <SideBar login={login} />
         {login ?
             <div className="userArea">
+                <div className="username">
+                {localStorage.getItem("myUsername")}
+                </div>
                 <img alt="avatar" src="" />
                 {/* " "傳入照片 */}
                 
                 <button onClick={() => {
                     localStorage.removeItem("token");
+                    localStorage.setItem("toLoginStatus", "")
                     setNavigate("/");
                 }}>
                     <span className="material-symbols-outlined">
@@ -44,6 +48,7 @@ export default function TopBar(): ReactElement {
                 </button>
             </div> :
             <div className="userArea" onClick={() => {
+                localStorage.setItem("toLoginStatus", "")
                 setNavigate("toLogin");
                 setChecked(false);
             }}>
