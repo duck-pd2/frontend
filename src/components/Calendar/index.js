@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react'
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -51,7 +52,7 @@ export default function Calendar() {
   const [filterVisible, setFilterVisible] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/v0/events')
+    fetch('https://pd.potatoez.xyz/api/v0/events')
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -77,8 +78,6 @@ export default function Calendar() {
         console.log(err.message);
       });
   }, []);
-
-
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -111,7 +110,9 @@ export default function Calendar() {
     <div className="calendear">
       <div className="sidebar">
         <button onClick={openModal}
-          style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "24px", backgroundColor: "#3f78b5", color: "white", border: "none", borderadius: "4px", marginBottom: "10px" }}>add event</button>
+          style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "24px", backgroundColor: "#3f78b5", color: "white", border: "none", borderadius: "4px", marginBottom: "10px" }}>
+            add event
+        </button>
         <button onClick={() => setFilterVisible(!filterVisible)}
           style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "24px", backgroundColor: "#3f78b5", color: "white", border: "none", borderadius: "4px", marginBottom: "10px" }}>
           {filterVisible ? 'filter▲' : 'filter▼'}
