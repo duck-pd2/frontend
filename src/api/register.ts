@@ -13,6 +13,5 @@ export default async function register(data: {
             }
         }
     );
-    
     return response.data;
 };

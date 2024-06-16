@@ -1,27 +1,3 @@
-// import axios from "axios";
-
-// export default async function upload(data: {
-//     ics_url: string
-// }): Promise<{ token: string }> {
-//     const localToken = localStorage.getItem("token"); // 假設 token 存儲在 localStorage 中
-
-//     if (!localToken) {
-//         throw new Error("Token not found");
-//     }
-
-//     const response = await axios.post(
-//         "/events",
-//         data,
-//         {
-//             headers: {
-//                 "Authorization": `Bearer ${localToken}`
-//             }
-//         }
-//     );
-
-//     return response.data;
-// }
-
 import axios from "axios";
 
 export default async function upload(data: {
@@ -47,6 +23,5 @@ export default async function upload(data: {
             }
         }
     );
-
     return response.data;
 }

@@ -13,6 +13,5 @@ export default async function login(data: {
             }
         }
     );
-    
     return response.data;
 };
