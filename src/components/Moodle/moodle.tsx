@@ -18,16 +18,22 @@ export default function Moodle(): ReactElement {
             <input className="moodleUrl" value={ics_url} onChange={(event: ChangeEvent<HTMLInputElement>) => {
                 setIcs_url(event.target.value);
             }}></input>
+
+            <div className="postEventsStatus">
+            {localStorage.getItem("postEventsStatus")}
+            </div>
+
             <button onClick={() => {
                 console.log("ics_url = " + ics_url)
                 postEvents({ ics_url: ics_url }).then(data => {
-                    localStorage.setItem("postEventsStatus", "success");
+                    localStorage.setItem("postEventsStatus", "");
                     console.log("postEvents success.");
+                    setNavigate("/../Calender")
                 }).catch((error: AxiosError) => {
                     const data = error.response?.data as {
                         message: string
                     }
-                    localStorage.setItem("postEventsStatus", data.message)
+                    localStorage.setItem("postEventsStatus", "urlError")
                     console.log("postEvents failed, " + localStorage.getItem("postEventsStatus"));
                     setNavigate("/Moodle")
                 });

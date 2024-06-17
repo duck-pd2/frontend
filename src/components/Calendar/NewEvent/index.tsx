@@ -35,7 +35,7 @@ export default function NewEvent(props: propsType): ReactElement {
     const [tags, setTags] = useState<Array<string>>([]);
 
     useEffect(() => {
-        if (show === false) {
+        if (show === true) {
             setTitle("")
             setDescription("")
             const date = new Date();
