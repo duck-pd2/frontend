@@ -3,23 +3,20 @@ import axios from "axios";
 export default async function upload(data: {
     ics_url: string
 }): Promise<{}> {
-    const token = localStorage.getItem("token"); // 假设 token 存储在 localStorage 中
+    const token = localStorage.getItem("token"); // 假設 token 有存储在 localStorage 中
     console.log("token = " + token)
 
     if (!token) {
         throw new Error("Token not found");
     }
 
-    const formData = new FormData();
-    formData.append("ics_url", data.ics_url);
-
     const response = await axios.post(
         "/events",
-        formData,
+        data,
         {
             headers: {
                 "Authorization": `Bearer ${token}`,
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "application/json"
             }
         }
     );

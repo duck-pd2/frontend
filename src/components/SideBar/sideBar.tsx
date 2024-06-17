@@ -41,17 +41,16 @@ export default function SideBar(props: Readonly<{
             <div className="mask">
                 <div className="menuList">
                     <div className="menu" onClick={() => {
-                        if (!login) {
-                            setNavigate("notice");
-                            setChecked(false);
-                            return;
-                        }
-
-                        setNavigate("moodle");
+                        // if (!login) {
+                        //     setNavigate("notice");
+                        //     setChecked(false);
+                        //     return;
+                        // }
+                        setNavigate("home");
                         setChecked(false);
                     }}>
                         <div>
-                            將 moodle 行事曆匯入
+                            回首頁
                         </div>
                     </div>
                     <div className="menu" onClick={() => {
@@ -68,16 +67,17 @@ export default function SideBar(props: Readonly<{
                         </div>
                     </div>
                     <div className="menu" onClick={() => {
-                        // if (!login) {
-                        //     setNavigate("notice");
-                        //     setChecked(false);
-                        //     return;
-                        // }
-                        setNavigate("home");
+                        if (!login) {
+                            setNavigate("notice");
+                            setChecked(false);
+                            return;
+                        }
+
+                        setNavigate("moodle");
                         setChecked(false);
                     }}>
                         <div>
-                            回首頁
+                            將 moodle 行事曆匯入
                         </div>
                     </div>
                 </div>
