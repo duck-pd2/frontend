@@ -35,6 +35,7 @@ export default function ToLogin(): ReactElement {
                         localStorage.setItem("token", data.token);
                         localStorage.setItem("toLoginStatus", "success")
                         console.log("Register success.")
+                        console.log("token = " + data.token)
                         setNavigate("/")
                     }).catch((error: AxiosError) => {
                         const data = error.response?.data as {
@@ -55,6 +56,7 @@ export default function ToLogin(): ReactElement {
                         localStorage.setItem("token", data.token);
                         localStorage.setItem("toLoginStatus", "success")
                         console.log("Login success.")
+                        console.log("token = " + data.token)
                         setNavigate("/")
                     }).catch((error: AxiosError) => {
                         const data = error.response?.data as {
