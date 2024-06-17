@@ -1,0 +1,66 @@
+            <button onClick={() => {
+                postEvent({
+                    title: "testTitle",
+                    start: "2024-06-17T15:59:59",
+                    end: "2024-06-17T15:59:59",
+                    description: "testDescription",
+                    eventClass: "testEventClass",
+                    color: "#F7F7F7",
+                    tags: []
+                }).then(data => {
+                    localStorage.setItem("postEventStatus", "success");
+                    console.log("postEvent success.");
+                }).catch((error: AxiosError) => {
+                    const data = error.response?.data as {
+                        message: string
+                    }
+                    localStorage.setItem("postEventStatus", data.message)
+                    console.log("postEvent failed, " + localStorage.getItem("postEventStatus"));
+                    // setNavigate("/Moodle")
+                });
+            }} className="add">
+                Add Even
+            </button>
+
+            <button onClick={() => {
+                update({
+                    id: "66705aba625925221a4141dd",
+                    title: "testTitle",
+                    start: "2024-06-17T15:59:59",
+                    end: "2024-06-17T15:59:59",
+                    description: "testDescription",
+                    eventClass: "testEventClass",
+                    color: "#F7F7F7",
+                    tags: []
+                }).then(data => {
+                    localStorage.setItem("updateEventStatus", "success");
+                    console.log("updateEvent success.");
+                }).catch((error: AxiosError) => {
+                    const data = error.response?.data as {
+                        message: string
+                    }
+                    localStorage.setItem("updateEventStatus", data.message)
+                    console.log("updateEvent failed, " + localStorage.getItem("updateEventStatus"));
+                    // setNavigate("/Moodle")
+                });
+            }} className="add">
+                Upd Even
+            </button>
+
+            <button onClick={() => {
+                deleteEvent({
+                    id: "66705ed5183e3b454a1fc932",
+                }).then(data => {
+                    localStorage.setItem("deleteEventStatus", "success");
+                    console.log("deleteEvent success.");
+                }).catch((error: AxiosError) => {
+                    const data = error.response?.data as {
+                        message: string
+                    }
+                    localStorage.setItem("deleteEventStatus", data.message)
+                    console.log("deleteEvent failed, " + localStorage.getItem("deleteEventStatus"));
+                    // setNavigate("/Moodle")
+                });
+            }} className="add">
+                RM Even
+            </button>

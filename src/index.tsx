@@ -8,7 +8,10 @@ import axios from 'axios';
 
 axios.interceptors.request.use(async (config) => {
   config.baseURL = process.env.REACT_APP_API_END_POINT;
-  
+  const token = localStorage.getItem("token");
+  if (token !== null) {
+    config.headers.set("Authorization", `Bearer ${token}`);
+  }
   return config;
 })
 

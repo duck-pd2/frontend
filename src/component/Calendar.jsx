@@ -11,7 +11,6 @@ function Calendar() {
             plugins ={[daygrid, timegrid, interaction]}
             initialView ={"daygridMonth"}
         />
-
     </div>;
 }
 

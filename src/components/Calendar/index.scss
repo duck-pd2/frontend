@@ -1,126 +1,155 @@
-.calendar {
+#calendar {
+    height: calc(100vh - 3rem);
+    width: 80vw;
+    margin: auto;
+    overflow: hidden;
 
-    /* App.css */
-    body {
-      background-color: rgb(0, 0, 0);
-      /* 改变整个页面的背景颜色 */
+    h2 {
+        text-align: center;
+        font-size: 2.25rem;
+        margin: 1rem 0;
+        height: 3rem;
+        line-height: 3rem;
     }
 
-    #external-events {
-      margin: 20px 0;
-      padding: 10px;
-      width: 150px;
-      background: #000000;
-      border: 1px solid #ddd;
-      text-align: left;
+    .toolBar {
+        display: flex;
+        height: 2.5rem;
+        align-items: center;
+        gap: 1rem;
+        margin: 1rem 0;
+
+        button {
+            height: 100%;
+            border: none;
+            background-color: #44C;
+            border-radius: 0.25rem;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            font-size: 1.25rem;
+            color: #FFF;
+            user-select: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #55D;
+        }
+
+        button.refresh {
+            margin-left: auto;
+        }
     }
 
-    #external-events .fc-event {
-      margin: 10px 0;
-      cursor: pointer;
+    .weekday {
+        display: flex;
+        user-select: none;
+
+        div {
+            text-align: center;
+            flex: 1;
+            border: 0.1rem solid #000;
+            border-bottom: none;
+            border-top-width: 0.2rem;
+            height: 2.25rem;
+            line-height: 2.25rem;
+        }
+
+        div:first-child {
+            border-left-width: 0.2rem;
+        }
+
+        div:last-child {
+            border-right-width: 0.2rem;
+        }
     }
 
-    .fc {
-      background-color: rgb(0, 0, 0);
-      /* 改变整个日历的背景颜色 */
+    .table {
+        height: calc(100vh - 18rem);
+        overflow: hidden;
+        user-select: none;
+
+        .week {
+            position: relative;
+            top: 0;
+            height: var(--height);
+            --height: calc(100% / var(--total-week));
+            display: flex;
+            transition: height 0.5s, top 0.5s, border-width 0.5s;
+
+            .day {
+                flex: 1;
+                border: 0.1rem solid #000;
+                transition: background-color 0.3s;
+                overflow: hidden;
+
+                .date {
+                    width: calc(100% - 1.2rem);
+                    margin: 0.3rem auto;
+                    text-align: right;
+                    font-size: 1.2rem;
+                }
+
+                .event {
+                    width: calc(100% - 0.8rem);
+                    margin: 0.2rem auto;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    font-size: 0.8rem;
+                    padding: 0.25rem;
+                    border-radius: 0.2rem;
+                    background-color: var(--color, #0EF);
+                    user-select: none;
+                    cursor: pointer;
+                }
+            }
+
+            .day:first-child {
+                border-left-width: 0.2rem;
+            }
+
+            .day:last-child {
+                border-right-width: 0.2rem;
+            }
+
+            .day[data-current=false] {
+                color: #AAA;
+            }
+
+            .day[data-select=true] {
+                background-color: #ee68;
+            }
+        }
+
+        .week:first-of-type {
+            .day {
+                border-top-width: 0.2rem;
+            }
+        }
+
+        .week:last-of-type {
+            .day {
+                border-bottom-width: 0.2rem;
+            }
+        }
     }
 
-    .fc-daygrid-day {
-      background-color: #00000000;
-      /* 改变每个日期单元格的背景颜色 */
-      color: white !important;
-      /* 改变事件的文字颜色 */
+    .table[data-week-mode=true] {
+        .week {
+            top: calc(-100% * var(--current-week));
+            height: 100%;
 
+            .day {
+                overflow-y: auto;
+                border-top-width: 0.2rem;
+                border-bottom-width: 0.2rem;
+
+                .event {
+                    white-space: initial;
+                }
+            }
+        }
     }
-
-    .fc-toolbar {
-      background-color: #3f78b5;
-      /* 改变工具栏的背景颜色 */
-      color: white;
-      /* 改变工具栏的文字颜色 */
-    }
-
-    .fc-event {
-      color: white !important;
-      /* 改变事件的文字颜色 */
-    }
-
-    .fc-day-today {
-      background-color: #3d3939 !important;
-      /* 改变今天的背景颜色 */
-    }
-
-    .fc-highlight {
-      background-color: #D3D3D3 !important;
-      /* 改变鼠标悬停日期的背景颜色 */
-    }
-
-    .App {
-      display: flex;
-    }
-
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      padding: 10px;
-      width: 200px;
-      background-color: #000000;
-      color: white !important;
-      /* 改变事件的文字颜色 */
-
-    }
-
-    .sidebar h3 {
-      margin-bottom: 10px;
-    }
-
-    .filter-label {
-      display: column;
-      margin-bottom: 30px;
-      color: white !important;
-      /* 改变事件的文字颜色 */
-    }
-
-    .calendar-container {
-      flex-grow: 1;
-    }
-
-    .fc-event {
-      padding: 5px;
-      border-radius: 3px;
-      display: flex;
-      align-items: center;
-    }
-
-    .fc-event-title {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .button {
-      font-size: 32px;
-      /* 调整字体大小 */
-      font-family: 'Times New Roman', Times, serif;
-      /* 调整字体类型 */
-      padding: 10px 20px;
-      /* 调整内边距 */
-      background-color: #4CAF50;
-      /* 背景颜色 */
-      color: white !important;
-      /* 改变事件的文字颜色 */
-      border: none;
-      /* 无边框 */
-      border-radius: 4px;
-      /* 圆角 */
-      cursor: pointer;
-      /* 鼠标悬停时显示手指图标 */
-      margin: 5px 0;
-      /* 调整外边距 */
-    }
-
-    .button:hover {
-      background-color: #45a049;
-      /* 鼠标悬停时的背景颜色 */
-    }
-  }
+}

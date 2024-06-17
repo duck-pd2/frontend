@@ -6,12 +6,8 @@ export default async function login(data: {
 }): Promise<{token: string}> {
     const response = await axios.post(
         "/login",
-        new URLSearchParams(data),
-        {
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            }
-        }
+        data
     );
+
     return response.data;
 };
