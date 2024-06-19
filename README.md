@@ -1,3 +1,5 @@
+Here is our [project presentation slide deck](https://www.canva.com/design/DAGIbb-GNQc/M-zJTwg7tl-ZUuxgLu-7EA/edit).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
